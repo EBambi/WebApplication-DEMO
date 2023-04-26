@@ -13,10 +13,5 @@ pipeline {
                 sh 'go build main.go'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'echo "Unit testing"'
-            }
-        }
     }
 }
