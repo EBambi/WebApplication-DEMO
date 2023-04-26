@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'nohup go run main.go'
+                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup go run main.go'
             }
         }
     }
