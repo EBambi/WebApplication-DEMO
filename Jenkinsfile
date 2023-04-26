@@ -5,7 +5,6 @@ pipeline {
             steps {
                 sshagent(credentials: [WebApplication-Demo]) {
                     git url: 'https://github.com/EBambi/WebApplication-DEMO.git'
-                    ls -al
                 }
             }
         }
