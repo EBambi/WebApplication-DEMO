@@ -7,7 +7,7 @@ import (
 )
 
 func webPage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Test")
+	fmt.Fprint(w, "Hi team!")
 }
 
 func main() {
