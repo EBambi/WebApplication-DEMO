@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'go build main.go'
+                sh 'nohup go main.go'
             }
         }
     }
