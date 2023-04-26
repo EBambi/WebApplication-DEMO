@@ -3,12 +3,12 @@ pipeline {
     stages{
         stage('Checkout') {
             steps {
-                sshagent(credentials: [WebApplication-Demo]) {
+                sshagent(credentials: ['WebApplication-Demo']) {
                     git url: 'https://github.com/EBambi/WebApplication-DEMO.git'
                 }
             }
         }
-        /*stage('Build') {
+        stage('Build') {
             steps {
                 go run main.go
             }
@@ -17,6 +17,6 @@ pipeline {
             steps {
                 echo 'Unit testing ...'
             }
-        }*/
+        }
     }
 }
