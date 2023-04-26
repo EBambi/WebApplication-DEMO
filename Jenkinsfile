@@ -8,10 +8,10 @@ pipeline {
                 }
             }
         }
-        /*stage('Build') {
+        stage('Build') {
             steps {
                 sh 'go build main.go'
             }
-        }*/
+        }
     }
 }
