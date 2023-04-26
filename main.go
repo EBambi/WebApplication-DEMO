@@ -11,5 +11,5 @@ func webPage(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", webPage)
-	http.ListenAndServe("", nil)
+	http.ListenAndServe(":3333", nil)
 }
