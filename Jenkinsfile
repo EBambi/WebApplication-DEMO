@@ -8,7 +8,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 go run main.go
             }
@@ -17,6 +17,6 @@ pipeline {
             steps {
                 echo 'Unit testing ...'
             }
-        }
+        }*/
     }
 }
