@@ -13,10 +13,18 @@ pipeline {
                 sh 'go build main.go'
             }
         }
-        stage('Deploy') {
+        stage('Connect to EC2') {
             steps {
-                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup ./main &'
+                sshagent(['/home/jenkins2/id_rsa']) {
+                    sshCommand remote: ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com, command: 'echo "Connection Successfully"'
+                }
             }
         }
+        /*stage('Deploy') {
+            steps {
+                sh ''
+                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup ./main &'
+            }
+        }*/
     }
 }
