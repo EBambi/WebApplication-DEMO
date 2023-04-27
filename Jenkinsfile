@@ -16,9 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'scp -i "/home/jenkins2/id_rsa" main index.html greet.html ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com:/home/ubuntu/'
-                sh ''' ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com
-                    '-t nohup ./main &'
-                '''
+                sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com -t echo "Testing Terminal Commands" '
             }
         }
     }
