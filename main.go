@@ -13,7 +13,7 @@ type Greeting struct {
 func main() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/greet", handleGreet)
-	log.Fatal(http.ListenAndServe(":3333", nil))
+	log.Fatal(http.ListenAndServe(":80", nil))
 }
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
