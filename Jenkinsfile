@@ -16,7 +16,7 @@ pipeline {
         stage('Connect to EC2') {
             steps {
                 sshagent(['AWS-Credential']) {
-                    sshCommand remote: ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com, command: 'echo "Connection Successfully"'
+                    sshCommand remote: ec2-ubuntu@ec2-12-58-91-243.compute-1.amazonaws.com, command: 'echo "Connection Successfully"'
                 }
             }
         }
