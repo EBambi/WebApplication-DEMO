@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Connect to EC2') {
             steps {
-                sshagent(['/home/jenkins2/id_rsa']) {
+                sshagent(['AWS-Credential']) {
                     sshCommand remote: ubuntu@ec2-13-58-91-243.us-east-2.compute.amazonaws.com, command: 'echo "Connection Successfully"'
                 }
             }
