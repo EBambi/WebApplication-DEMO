@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'worker-1'}
     stages{
         stage('Checkout') {
             steps {
@@ -10,7 +10,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup go run main.go &'
+                sh 'go build main.go'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'JENKINS_NODE_COOKIE=dontKillMe nohup ./main &'
             }
         }
     }
