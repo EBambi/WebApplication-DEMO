@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'go build .'
+                sh 'go build main.go greet.html index.html'
             }
         }
         stage('Deploy') {
