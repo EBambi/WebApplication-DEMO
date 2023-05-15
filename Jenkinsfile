@@ -15,10 +15,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com -t "systemctl stop web.service"'
+                sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com -t "systemctl --user stop web.service"'
                 sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com -t "rm /home/ubuntu/*"'
                 sh 'scp -i "/home/jenkins2/id_rsa" main index.html greet.html ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com:/home/ubuntu/'
-                sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com -t "systemctl start web.service"'
+                sh 'ssh -i "/home/jenkins2/id_rsa" ubuntu@ec2-18-117-92-64.us-east-2.compute.amazonaws.com -t "systemctl --user start web.service"'
             }
         }
     }
