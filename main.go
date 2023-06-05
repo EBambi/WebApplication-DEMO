@@ -73,6 +73,6 @@ func testEq(a, b []int) bool {
 
 func main() {
 	http.HandleFunc("/", homeHandler)
-	fmt.Println("Server started on port 8080")
-	http.ListenAndServe(":8080", nil)
+	fmt.Println("Server started on port 3000")
+	http.ListenAndServe(":3000", nil)
 }
