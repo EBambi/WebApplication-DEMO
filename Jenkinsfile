@@ -9,9 +9,9 @@ pipeline {
                 }
             }
         }
-/*         stage('Unit Testing') {
+        stage('Unit Testing') {
             steps 'go test'
-        }
+/*        }
         stage('Build') {
             steps {
                 script{
