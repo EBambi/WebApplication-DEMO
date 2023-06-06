@@ -11,8 +11,8 @@ pipeline {
         }
         stage('Unit Testing') {
             steps 'go test'
-/*        }
-        stage('Build') {
+        }
+/*        stage('Build') {
             steps {
                 script{
                     app = docker.build("sorter-app-image")
