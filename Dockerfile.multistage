@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.20 AS build-stage
+FROM golang:1.20-alpine AS build
 
 # Set destination for COPY
 WORKDIR /sorter
@@ -9,17 +9,15 @@ WORKDIR /sorter
 COPY go.mod ./
 RUN go mod download
 
-COPY . ./
-RUN CGO_ENABLED=0 GOOS=linux go build -o /main
+COPY ["*.go","*.html","./"]
+RUN go build -o /main
 
-FROM gcr.io/distroless/base-debian11 AS build-release-stage
+FROM scratch
 
 WORKDIR /
 
-COPY --from=build-stage . .
+COPY --from=build ["*.go","*.html","/main/"]
 
 EXPOSE 3000
 
-USER nonroot:nonroot
-
-CMD [ "/main" ]
+ENTRYPOINT [ "/main" ]

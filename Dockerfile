@@ -9,7 +9,7 @@ WORKDIR /sorter
 COPY go.mod ./
 RUN go mod download
 
-COPY . ./
+COPY ["*.go","*.html","./"]
 RUN CGO_ENABLED=0 GOOS=linux go build -o /main
 RUN chmod +x /main
 
