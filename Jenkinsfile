@@ -14,15 +14,13 @@ pipeline {
         }
  */     stage('Build') {
             steps {
-                script{
-                    app = docker.build("sorter-app-image")
-                }
+                sh 'docker build -t sorter.v1:multistage -f Dockerfile.multistage .'
             }
         }
         stage('Upload to ECR') {
             steps {
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'
-                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'
+                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/sorter.v1:multistage'
             }
         } 
     }
