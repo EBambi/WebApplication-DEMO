@@ -2,8 +2,8 @@ pipeline {
     agent {label 'agent-one'}
     stages{
         stage('Checkout') {
-            cleanWs()
             steps {
+                cleanWs()
                 sshagent(credentials: ['WebApplication-Credentials']) {
                     git url: 'https://github.com/EBambi/WebApplication-DEMO.git', branch: 'master', credentialsId: 'WebApplication-Credentials'
                 }
