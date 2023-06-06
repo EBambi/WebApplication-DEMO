@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Upload to ECR') {
             steps {
-                docker.withRegistry('921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'){
+                docker.withRegistry('https://921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'){
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                 }
