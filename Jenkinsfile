@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'
                 sh 'docker tag sorter 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:1.1'
-                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'
+                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:1.1'
             }
         } 
     }
