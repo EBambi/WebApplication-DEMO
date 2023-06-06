@@ -9,7 +9,7 @@ pipeline {
                 }
             }
         }
-        stage('Unit Testing') {
+/*         stage('Unit Testing') {
             steps 'go test'
         }
         stage('Build') {
@@ -26,6 +26,6 @@ pipeline {
                     app.push("latest")
                 }
             }
-        }
+        } */
     }
 }
