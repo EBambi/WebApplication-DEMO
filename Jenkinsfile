@@ -20,16 +20,12 @@ pipeline {
         stage('Upload to ECR') {
             steps {
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository'
-                sh 'docker tag sorter 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:1.1'
-                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:1.1'
+                sh 'docker tag sorter 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:latest'
+                sh 'docker push 921884257724.dkr.ecr.us-east-2.amazonaws.com/app-repository:latest'
             }
         }
         stage('Update Service') {
             steps {
-                script{
-                    def output = sh(returnStdout: true, script: 'aws ecs describe-task-definition --task-definition sorter-app')
-                }
-                sh 'aws ecs register-task-definition --region us-east-2 --family sorter-service --container-definitions ${output}'
                 sh 'aws ecs update-service --region us-east-2 --cluster web-app-cluster --service sorter-service --force-new-deployment'
             }
         }
