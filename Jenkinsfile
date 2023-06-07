@@ -14,7 +14,7 @@ pipeline {
         }
  */     stage('Build') {
             steps {
-                sh 'docker build --tag sorter:latest .'
+                sh 'docker build --tag sorter .'
             }
         }
         stage('Upload to ECR') {
