@@ -10,7 +10,9 @@ pipeline {
             }
         }
         stage('Unit Testing') {
-            sh 'go test'
+            steps{
+                sh 'go test'
+            }
         }
         stage('Build') {
             steps {
