@@ -9,10 +9,10 @@ pipeline {
                 }
             }
         }
-/*         stage('Unit Testing') {
+         stage('Unit Testing') {
             steps 'go test'
         }
- */     stage('Build') {
+        stage('Build') {
             steps {
                 sh 'docker build --tag sorter .'
             }
