@@ -27,9 +27,9 @@ pipeline {
         stage('Update Service') {
             steps {
                 script{
-                    def task-definition = sh(returnStdout: true, script: 'aws ecs describe-task-definition --task-definition sorter-app')
+                    def output = sh(returnStdout: true, script: 'aws ecs describe-task-definition --task-definition sorter-app')
                 }
-                sh 'aws ecs register-task-definition --region us-east-2 --family sorter-service --container-definitions ${task-definition}'
+                sh 'aws ecs register-task-definition --region us-east-2 --family sorter-service --container-definitions ${output}'
                 sh 'aws ecs update-service --region us-east-2 --cluster web-app-cluster --service sorter-service --force-new-deployment'
             }
         }
